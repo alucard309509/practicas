@@ -20,159 +20,167 @@
 ##random.randint(1,4)
 #cantidad = random.randint(0,100)
 
-leche = 100
-precio_leche = 20
-huevo = 100
+import random
 
-precio_huevo = 18.5
-sabritas = 100
-precio_sabritas = 12.5
-coca = 100
-precio_coca = 25
 
-clientes = 0
-venta_total=0
-total_cliente = 0
-total_productos = 0
+informedeldia=["clientes",0,"venta_total",0,"total_cliente",0,"total_productos",0]
 
-venta_por_cliente = 0
-ven_total_sabritas = 0
-ven_total_huevo=0
-ven_total_leche=0
-ven_total_coca=0
+ventasentotalidad=["venta_por_cliente",0,"ven_total_sabritas",0,"ven_total_huevo",0,"ven_total_leche",0,"ven_total_coca",0]
 
-total_leche = 0
-total_huevo = 0
-total_sabritas = 0
-total_coca = 0
+totales=["total_leche",0,"total_huevo",0,"total_sabritas",0,"total_coca",0]
 
-can_sabritas=0
-can_leche=0
-can_huevo=0
-can_coca = 0
+canes=["can_sabritas",0,"can_leche",0,"can_huevo",0,"can_coca",0]
 
 producto = 0
+
 cantidad = 0
 
-huevo_por_cliente = 0
-leche_por_cliente = 0 
-coca_por_cliente = 0
-sabritas_por_cliente = 0
+cantidadporcliente=["huevo_por_cliente",0,"leche_por_cliente",0,"coca_por_cliente",0,"sabritas_por_cliente",0]
+
+leche=["cantidad",100, "precio", 20]
+
+huevo=["cantidad",100,"precio",18.5]
+
+sabritas=["cantidad",100,"precio",12.5]
+
+coca=["cantidad",100,"precio",25]
+
+productor=["leche","huevo","sabritas","coca"]
+
+comparador1 = 0
+comparador2 = 0
+
 
 res = input("Cerrar tienda?: ")
 while(res!="si"):
     res2 = input("Comprar producto?: ")
     while(res2 != "no"):
-        if(coca == 0 and huevo == 0 and leche == 0 and sabritas == 0):
+        ##if(coca == 0 and huevo == 0 and leche == 0 and sabritas == 0):
+        if(comparador1 == leche[1] and comparador1 == huevo[1] and comparador1 == sabritas[1] and comparador1 == coca[1] ):
              print("La tienda ha cerrado, productos agotados")
              break
         else:
             print("###############PRODUCTOS############### \n leche - $20 \n huevo - $18.5 \n sabritas - 25 \n coca - 12.5 \n\n ############################")
-            producto = input("Ingresar producto a comprar: ")
+            ##producto = input("Ingresar producto a comprar: ")
+            producto = random.choice(productor)
             if(producto == "leche"):
-                cantidad = int(input("Ingresar cantidad de leche a llevar: "))
-                if(cantidad > leche):
+        ##    if(producto == "leche"):
+                #cantidad = random.randint(0,100)
+                ##cantidad = int(input("Ingresar cantidad de leche a llevar: "))
+                cantidad = random.randint(1,leche[1])
+                if(cantidad > leche[1]):
                     print("No se tiene esa cantidad de leche")
                 else:
-                    total_leche = precio_leche * cantidad
-                    leche = leche - cantidad
-                    can_leche = can_leche + cantidad
-                    ven_total_leche = ven_total_leche + total_leche
-                    leche_por_cliente = leche_por_cliente + cantidad
-            elif(producto == "huevo"):
-                cantidad = int(input("Ingresar cantidad de huevo a llevar: "))
-                if(cantidad > huevo):
+
+                    totales[1]= leche[3]*cantidad
+                    leche[1] = leche[1] - cantidad
+                    canes[3] = canes[3]+cantidad
+                    ventasentotalidad[7] = ventasentotalidad[7]+totales[1]
+                    cantidadporcliente[3] = cantidadporcliente[3] + cantidad
+
+
+            elif(producto == huevo[1]):
+                cantidad = random.randint(1,huevo[1])
+                ##cantidad = int(input("Ingresar cantidad de huevo a llevar: "))
+                if(cantidad > huevo[1]):
                     print("No se tiene esa cantidad de huevo")
                 else:
-                    total_huevo = precio_huevo * cantidad
-                    huevo = huevo - cantidad
-                    can_huevo = can_huevo + cantidad
-                    ven_total_huevo = ven_total_huevo + total_huevo
-                    huevo_por_cliente = huevo_por_cliente + cantidad
-            elif(producto == "sabritas"):
-                cantidad = int(input("Ingresar cantidad de sabritas a llevar: "))
-                if(cantidad > sabritas):
+
+                    totales[1]= huevo[3] * cantidad
+                    huevo[1] =huevo[1] - cantidad
+                    canes[5] = canes[5] + cantidad
+                    ventasentotalidad[5] = ventasentotalidad[5]+totales[3]
+                    cantidadporcliente[1] = cantidadporcliente[1] + cantidad
+
+            elif(producto == sabritas[1]):
+                cantidad = random.randint(1,sabritas[1])
+                ##cantidad = int(input("Ingresar cantidad de sabritas a llevar: "))
+                if(cantidad > sabritas[1]):
                     print("Producto insuficiente")
                 else:
-                    total_sabritas = precio_sabritas * cantidad
-                    sabritas = sabritas - cantidad
-                    can_sabritas = can_sabritas + cantidad
-                    ven_total_sabritas = ven_total_sabritas + total_sabritas
-                    sabritas_por_cliente = sabritas_por_cliente + cantidad
-            elif(producto == "coca"):
-                cantidad = int(input("Ingresar cantidad de coca a llevar: "))
-                if(cantidad > coca):
+
+                    totales[5]=sabritas[3] * cantidad
+                    sabritas[1] = sabritas[1] - cantidad
+                    canes[1] = canes[1] - cantidad
+                    ventasentotalidad[3] = ventasentotalidad[3]+totales[5]
+                    cantidadporcliente[7] = cantidadporcliente[7] +cantidad
+
+            elif(producto == coca[1]):
+                cantidad = random.randint(1,coca[1])
+                ##cantidad = int(input("Ingresar cantidad de coca a llevar: "))
+                if(cantidad > coca[1]):
                     print("Producto insuficiente")
                 else:
-                    total_coca = precio_coca * cantidad
-                    coca = coca - cantidad
-                    can_coca = can_coca + cantidad
-                    ven_total_coca = ven_total_coca + total_coca
-                    coca_por_cliente = coca_por_cliente + cantidad
+
+                    totales[7] = coca[1]*cantidad
+                    coca[1]=coca[1]-cantidad
+                    canes[7]=canes[7]-cantidad
+                    ventasentotalidad[9] = ventasentotalidad[9]+totales[7]
+                    cantidadporcliente[5]= cantidadporcliente[5]+cantidad
             else:
                 print("Producto incorrecto")
         res2 = input("Comprar otro producto?: ")
-    total_cliente = total_coca + total_huevo + total_leche + total_sabritas
-    venta_total = venta_total + total_cliente
-    total_productos = can_coca + can_huevo + can_leche + can_sabritas
+    total_cliente = totales[7] + totales[3] + totales[1] + totales[5]
+    informedeldia[3] = informedeldia[3] +informedeldia[5]
+    informedeldia[7] =canes[7]+canes[5]+canes[3]+canes[1]
     print("-----------------------El cliente ha terminado la compra--------------------")
-    print("Coca vendida: ", coca_por_cliente)
-    coca_por_cliente = 0
-    print("Huevo vendido: ", huevo_por_cliente)
-    huevo_por_cliente = 0
-    print("Leche vendida: ", leche_por_cliente)
-    leche_por_cliente = 0
-    print("Sabritas vendidas: ", sabritas_por_cliente)
-    sabritas_por_cliente = 0
+    print("Coca vendida: ", cantidadporcliente[5])
+    cantidadporcliente[5]=0
+    print("Huevo vendido: ", cantidadporcliente[1])
+    cantidadporcliente[1] = 0
+    print("Leche vendida: ", cantidadporcliente[3])
+    cantidadporcliente[3] = 0
+    print("Sabritas vendidas: ", cantidadporcliente[7])
+    cantidadporcliente[7] = 0
     print("Total a pagar: ", total_cliente)
-    clientes = clientes + 1
+    informedeldia[1] = informedeldia[1] + 1
     print("---------------------------Producto Restante-------------------")
-    print("Huevo: ", huevo)
-    if(huevo==50):
+    print("Huevo: ", huevo[1])
+    if(huevo[1]==50):
         print("Huevo a la mitad de su existencia")
-    elif(huevo==25):
+    elif(huevo[1]==25):
         print("Huevo Agotandose")
-    elif(huevo<=10):
+    elif(huevo[1]<=10):
         print("Huevo Escaso")
-    print("Leche: ", leche)
-    if(leche==50):
+    print("Leche: ", leche[1])
+    if(leche[1]==50):
         print("Leche a la mitad de su existencia")
-    elif(leche==25):
+    elif(leche[1]==25):
         print("Leche Agotandose")
-    elif(leche<=10):
+    elif(leche[1]<=10):
         print("Leche Escasa")
-    print("Coca: ", coca)
-    if(coca==50):
+    print("Coca: ", coca[1])
+    if(coca[1]==50):
         print("Coca a la mitad de su existencia")
-    elif(coca==25):
+    elif(coca[1]==25):
         print("Coca Agotandose")
-    elif(coca<=10):
+    elif(coca[1]<=10):
         print("Coca Escasa")
-    print("Sabritas: ", sabritas)
-    if(sabritas==50):
+    print("Sabritas: ", sabritas[1])
+    if(sabritas[1]==50):
         print("Sabritas a la mitad de su existencia")
-    elif(sabritas==25):
+    elif(sabritas[1]==25):
         print("Sabritas Agotandose")
-    elif(sabritas<=10):
+    elif(sabritas[1]<=10):
         print("Sabritas Escasas")
     res = input("Cerrar tienda?: ")
 
 print("##################### LA TIENDA HA CERRADO ######################\n\n")
 print("#################### Productos vendidos ##################")
-print("Total de huevo vendido: ", can_huevo)
-print("Venta total de huevo: ", ven_total_huevo)
-print("Total de leche vendida: ", can_leche)
-print("Venta total de leche: ", ven_total_leche)
-print("Total de Sabritas vendidas: ", can_sabritas)
-print("Venta total de Sabritas: ", ven_total_sabritas)
-print("Total de coca vendida: ", can_coca)
-print("Venta total de coca", ven_total_coca)
+print("Total de huevo vendido: ", canes[5])
+print("Venta total de huevo: ", ventasentotalidad[5])
+print("Total de leche vendida: ", ventasentotalidad[3])
+print("Venta total de leche: ", ventasentotalidad[7])
+print("Total de Sabritas vendidas: ", canes[1])
+print("Venta total de Sabritas: ", ventasentotalidad[3])
+print("Total de coca vendida: ", canes[7])
+print("Venta total de coca", ventasentotalidad[9])
 print("################# Productos restantes ###########################")
-print("Leche: ", leche)
-print("Huevo: ", huevo)
-print("Coca: ", coca)
-print("Sabritas: ", sabritas)
+print("Leche: ", leche[1])
+print("Huevo: ", huevo[1])
+print("Coca: ", coca[1])
+print("Sabritas: ", sabritas[1])
 print("######################### Venta total ##############################")
-print("Productos totales vendidos: ", total_productos)
-print("Venta total del día: ", venta_total)
-print("Total de clientes del día: ", clientes)
+print("Productos totales vendidos: ", informedeldia[7])
+print("Venta total del día: ", informedeldia[3])
+print("Total de clientes del día: ", informedeldia[1])
